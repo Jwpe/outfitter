@@ -1,0 +1,1 @@
+My app for learning how to Meteor.
