@@ -1,0 +1,76 @@
+<head>
+    <title>Outfitter</title>
+</head>
+
+<body>
+    {{> main }}
+</body>
+
+<!-- Base of the site -->
+<template name="main">
+    <div class="navbar navbar-static-top navbar-inverse">
+        <div class="navbar-inner">
+            <a class="brand" href="#">Outfitter</a>
+            <ul class="nav">
+                <li><a href="/">Home</a><li>
+            </ul>
+            <ul class="nav pull-right">
+                <li>{{ loginButtons align="right"}}</li>
+            <ul>
+        </div>
+    </div>
+    <div class="container">
+        {{#if user_id }}
+            {{>dashboard}}
+        {{ else }}
+        <div class="page-header">
+            <h1>Welcome to Outfitter</h1>
+        </div>
+        <p>Please log in to proceed.</p>
+        {{/if }}
+    </div>
+</template>
+
+<template name="dashboard">
+    <div class="row">
+        {{>sidebar }}
+        {{#if outfit_id }}
+            {{>outfit }}
+        {{else }}
+            {{>wardrobe }}
+        {{/if}}
+    </div>
+</template>
+
+<!-- Navigation sidebar for the Dashboard -->
+<template name="sidebar">
+    <div class="span2">
+        <a href="/wardrobe" class="outfitter-navlink"><h2>Wardrobe</h2></a>
+        {{#if outfits }}
+            <p>{{ outfits.count }} Outfits</p>
+            <ul>
+            {{#each outfits }}
+                <li><a href="/outfit/{{ _id }}" class="outfitter-navlink">{{ name }}</a></li>
+            {{/each }}
+            </ul>
+        {{/if }}
+    </div>
+</template>
+
+<!-- Wardrobe view for the Dashboard -->
+<template name="wardrobe">
+    <div class="span10">
+        <div class="page-header">
+            <h1>My Wardrobe</h1>
+        </div>
+    </div>
+</template>
+
+<!-- Outfit view for the Dashboard -->
+<template name="outfit">
+    <div class="span10">
+        <div class="page-header">
+            <h1>{{ outfit.name }}</h1>
+        </div>
+    </div>
+</template>

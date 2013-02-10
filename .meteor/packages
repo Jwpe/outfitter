@@ -4,9 +4,10 @@
 # but you can also edit it by hand.
 
 autopublish
-insecure
 preserve-inputs
 less
 coffeescript
 accounts-password
 bootstrap
+backbone
+accounts-ui
